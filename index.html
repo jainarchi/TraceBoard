@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <div id="addTaskView">
+        <div>
+            <input id="taskTitle" type="text" placeholder="Title">
+            <textarea id="titleDesp" name="write here" placeholder="Description"></textarea>
+
+            <button id="addTask">Add Task</button>
+
+        </div>
+    </div>
+    
+    <nav>
+        <h2 id="title">TraceBoard</h2>
+        <button id="newTask">Add new task</button>
+    </nav>
+    
+    <section >
+        <div class="col" id="todoCol">
+            <div class="heading-count">
+                <h4>Todo</h4>
+                <span class="count">0</span>
+            </div>
+
+            <!-- <div draggable="true" class="task">
+
+                <div class="top">
+                    <h4>Task-1</h4>
+                  <div>
+                    <i class="ri-delete-bin-6-line"></i>
+                    <i class="ri-pencil-line"></i>
+                 </div>
+                </div>
+              
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, facere.</p>
+
+            </div> -->
+            
+        </div>
+         <div class="col"  id="progressCol">
+            <div class="heading-count">
+                <h4>Progress</h4>
+                <span class="count">0</span>
+            </div>
+        </div>
+
+
+         <div class="col" id="doneCol" >
+            <div class="heading-count">
+                <h4>Done</h4>
+                <span class="count">0</span>
+            </div>
+        </div>
+
+
+
+ </section>
+
+
+
+
+</main>
+        
+   
+
+   <script src="script.js"></script>
+</body>
+</html>

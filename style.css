@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --padding-nav: 1rem 2rem;
+  --btn-padding: 0.4rem 0.5rem;
+  --btn-bg: rgb(255, 85, 0);
+  --btn-font: 1rem;
+
+  --padding-sm: 0.5rem;
+  --padding-xl: 1rem;
+  --padding-2xl: 2rem;
+}
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  background: #111;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  padding: var(--padding-nav);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title {
+  font-family: cursive;
+  font-weight: 500;
+}
+
+button {
+  padding: var(--btn-padding);
+  background-color: var(--btn-bg);
+  font-size: var(--btn-font);
+  border-radius: var(--padding-sm);
+  cursor: pointer;
+  border: none;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--padding-2xl);
+  padding: var(--padding-xl) var(--padding-xl);
+  flex-grow: 1;
+}
+section > div {
+  border: 1px solid rgb(85, 85, 88);
+  border-radius: var(--padding-sm);
+  overflow: hidden;
+  transition: 0.3s linear;
+}
+
+.heading-count {
+  display: flex;
+  justify-content: space-between;
+  background: #dc2602;
+  padding: var(--padding-sm);
+}
+
+.heading-count h4 {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.task {
+  padding: var(--padding-sm);
+  background: rgb(36, 35, 35);
+  margin: var(--padding-sm);
+  cursor: grab;
+}
+.task .top {
+  display: flex;
+  justify-content: space-between;
+}
+.task h4 {
+  color: #e82a03;
+}
+
+i {
+  cursor: pointer;
+  color: var(--btn-bg);
+}
+.task p {
+  margin: var(--padding-xl) 0;
+  font-size: var(--btn-font);
+}
+
+.hover-over {
+  border: 2px dashed rgb(144, 144, 148);
+  scale: 1.05;
+}
+
+#addTaskView {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(30, 30, 30, 0.756);
+  backdrop-filter: blur(1px);
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#addTaskView div {
+  box-shadow: 0px 0px 30px rgba(174, 3, 3, 0.733);
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-sm);
+  border-radius: var(--padding-sm);
+  padding: var(--padding-xl);
+  width: 68vmin;
+}
+
+#addTaskView input,
+textarea {
+  width: 100%;
+  background: transparent;
+  padding: var(--padding-sm);
+  border: 1px solid gray;
+  color: whitesmoke;
+}
+textarea{
+  resize: vertical;
+  min-height: 20vh ;
+  max-height: 40vh;
+}
+
+@media (max-width: 1000px) {
+  section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    grid-template-columns: 1fr;
+  }
+}
