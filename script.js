@@ -11,6 +11,60 @@ let doneCol = document.getElementById("doneCol")
 let draggedTask = null;
 
 
+function updateColCount(){
+    cols.forEach((col) =>{
+        let tasks = col.querySelectorAll('.task');
+        let count = col.querySelector('.count');
+
+        count.textContent = tasks.length
+    })
+}
+
+function makeTaskCard(title , desp , column){
+
+       let div = document.createElement("div")
+                    div.setAttribute('draggable', true)
+                    div.classList.add('task')
+
+                    div.innerHTML = ` <div class="top">
+                    <h4>${title}</h4>
+                  <div>
+                     delete
+                    |  edit
+                 </div>
+                </div>
+
+                <p>${desp}</p>
+             `
+
+     column.appendChild(div)
+
+     div.addEventListener('dragstart', () => {
+        draggedTask = div;
+    })
+
+}
+
+function storeinLocalStorage(){
+
+    cols.forEach((col) =>{
+        let col_tasks = col.querySelectorAll('.task');
+
+        tasksData[col.id] = Array.from(col_tasks).map((t) =>{
+            return {
+                title : t.querySelector('h4').textContent ,
+                desp : t.querySelector('p').textContent
+
+            }
+        })
+    })
+
+    localStorage.setItem('tasksData' , JSON.stringify(tasksData));
+}
+
+
+
+
 
 function initalRender() {
     if (localStorage.getItem('tasksData')) {
@@ -20,31 +74,10 @@ function initalRender() {
             if (tasksData[col.id]) {
 
                 tasksData[col.id].forEach((t) => {
-
-                    let div = document.createElement("div")
-                    div.setAttribute('draggable', true)
-                    div.classList.add('task')
-
-                    div.innerHTML = ` <div class="top">
-                    <h4>${t.title}</h4>
-                  <div>
-                    <i class="ri-delete-bin-6-line"></i>
-                    <i class="ri-pencil-line"></i>
-                 </div>
-                </div>
-
-                <p>${t.desp}</p>
-            `
-                    col.appendChild(div)
-
-                    div.addEventListener('dragstart', () => {
-                        draggedTask = div;
-                    })
+                    makeTaskCard(t.title , t.desp , col)
                 })
 
-
-                col.querySelector('.count').textContent = tasksData[col.id].length
-
+               updateColCount();
 
             }
         })
@@ -53,8 +86,6 @@ function initalRender() {
 
 
 initalRender();
-
-
 
 tasks.forEach((task) => {
     task.addEventListener("dragstart", () => {
@@ -77,43 +108,15 @@ addTask.addEventListener('click', function () {
     let title = document.getElementById('taskTitle').value;
     let desp = document.getElementById('titleDesp').value;
 
-    let div = document.createElement("div")
-    div.setAttribute('draggable', true)
-    div.classList.add('task')
-
-    div.innerHTML = ` <div class="top">
-                    <h4>${title}</h4>
-                  <div>
-                    <i class="ri-delete-bin-6-line"></i>
-                    <i class="ri-pencil-line"></i>
-                 </div>
-                </div>
-
-                <p>${desp}</p>
-            `
-
-    todoCol.appendChild(div)
-
-    div.addEventListener('dragstart', () => {
-        draggedTask = div;
-    })
-
-    // increase count 
-    let count = todoCol.querySelector('.count')
-    count.textContent = parseInt(count.textContent) + 1
+    makeTaskCard(title , desp , todoCol)
+    updateColCount();
 
     document.getElementById('addTaskView').style.display = 'none'
 
 
-    // add new task in todoCol
-    if (!tasksData.todoCol) {
-        tasksData.todoCol = []
-    }
-    tasksData.todoCol.push({
-        title: div.querySelector('h4').textContent,
-        desp: div.querySelector('p').textContent
-    })
-    localStorage.setItem('tasksData', JSON.stringify(tasksData))
+    document.getElementById('taskTitle').value = '';
+    document.getElementById('titleDesp').value = '';
+
 })
 
 
@@ -148,26 +151,9 @@ function col_drag_action(col) {
 
         col.classList.remove("hover-over")
 
-
-        cols.forEach((col) => {
-            let col_tasks = col.querySelectorAll('.task')
-            col.querySelector('.count').textContent = col_tasks.length;
-
-
-            tasksData[col.id] = Array.from(col_tasks).map((t) => {
-                return {
-                    title: t.querySelector('h4').textContent,
-                    desp: t.querySelector('p').textContent
-                }
-            })
-
-            localStorage.setItem('tasksData', JSON.stringify(tasksData));
-        })
-
+        storeinLocalStorage();
+        updateColCount();
     })
-
-
-
 }
 
 
