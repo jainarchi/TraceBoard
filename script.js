@@ -102,8 +102,13 @@ newTaskbtn.addEventListener('click', function () {
 
 addTask.addEventListener('click', function () {
 
-    let title = document.getElementById('taskTitle').value;
-    let desp = document.getElementById('titleDesp').value;
+    let title = document.getElementById('taskTitle').value.trim();
+    let desp = document.getElementById('titleDesp').value.trim();
+
+    if(title === '' || desp === ''){
+        alert('Please enter both title & description.')
+        return ;
+    }
 
     makeTaskCard(title , desp , todoCol)
     updateLocalStorage();
