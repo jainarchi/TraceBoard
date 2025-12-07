@@ -37,6 +37,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  background: #201f1fa9;
+  backdrop-filter: blur(4px);
 }
 
 #title {
@@ -93,10 +97,13 @@ section > div {
   color: #e82a03;
 }
 
-i {
+.icon {
   cursor: pointer;
-  color: var(--btn-bg);
+  height: 1.2rem;
+  width: 1.2rem;
 }
+
+
 .task p {
   margin: var(--padding-xl) 0;
   font-size: var(--btn-font);

@@ -28,9 +28,11 @@ function makeTaskCard(title , desp , column){
 
                     div.innerHTML = ` <div class="top">
                     <h4>${title}</h4>
-                  <div>
-                     delete
-                    |  edit
+
+                  <div> 
+                    <img class='delete-btn icon' src='./assets/system-solid-39.webp' title="Icon by Lordicon.com" alt="delete" />
+                    <img class='edit-btn icon' src='./assets/edit-document-hover-pinch.webp' title="Icon by Lordicon.com" alt="edit" />
+
                  </div>
                 </div>
 
@@ -43,9 +45,16 @@ function makeTaskCard(title , desp , column){
         draggedTask = div;
     })
 
+    div.querySelector('.delete-btn').addEventListener('click' , ()=>{
+        div.remove()
+        updateLocalStorage();
+        updateColCount();
+
+    })
+
 }
 
-function storeinLocalStorage(){
+function updateLocalStorage(){
 
     cols.forEach((col) =>{
         let col_tasks = col.querySelectorAll('.task');
@@ -61,9 +70,6 @@ function storeinLocalStorage(){
 
     localStorage.setItem('tasksData' , JSON.stringify(tasksData));
 }
-
-
-
 
 
 function initalRender() {
@@ -84,16 +90,7 @@ function initalRender() {
     }
 }
 
-
 initalRender();
-
-tasks.forEach((task) => {
-    task.addEventListener("dragstart", () => {
-        draggedTask = task;
-        console.log(draggedTask);
-
-    })
-})
 
 
 
@@ -109,7 +106,10 @@ addTask.addEventListener('click', function () {
     let desp = document.getElementById('titleDesp').value;
 
     makeTaskCard(title , desp , todoCol)
+    updateLocalStorage();
     updateColCount();
+
+    
 
     document.getElementById('addTaskView').style.display = 'none'
 
@@ -151,7 +151,7 @@ function col_drag_action(col) {
 
         col.classList.remove("hover-over")
 
-        storeinLocalStorage();
+        updateLocalStorage();
         updateColCount();
     })
 }
