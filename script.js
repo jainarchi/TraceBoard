@@ -45,7 +45,7 @@ function makeTaskCard(title , desp , column){
         draggedTask = div;
     })
 
-    
+
 
     div.querySelector('.delete-btn').addEventListener('click' , ()=>{
         div.remove()
@@ -129,6 +129,7 @@ addTask.addEventListener('click', function () {
         taskBeingEdit.querySelector('h4').textContent = title ; 
         taskBeingEdit.querySelector('p').textContent = desp ;
         taskBeingEdit = null ;
+        addTask.textContent = 'Add Task'
     }
      else{
         makeTaskCard(title , desp , todoCol)
