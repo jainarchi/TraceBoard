@@ -9,7 +9,7 @@ let todoCol = document.getElementById("todoCol")
 let progressCol = document.getElementById("progressCol")
 let doneCol = document.getElementById("doneCol")
 let draggedTask = null;
-
+let taskBeingEdit = null ;
 
 function updateColCount(){
     cols.forEach((col) =>{
@@ -45,10 +45,25 @@ function makeTaskCard(title , desp , column){
         draggedTask = div;
     })
 
+    
+
     div.querySelector('.delete-btn').addEventListener('click' , ()=>{
         div.remove()
         updateLocalStorage();
         updateColCount();
+
+    })
+
+
+    div.querySelector('.edit-btn').addEventListener('click' , ()=>{
+        newTaskbtn.click()
+        taskBeingEdit = div ;
+
+        document.getElementById('taskTitle').value = div.querySelector('h4').textContent ;
+        document.getElementById('titleDesp').value = div.querySelector('p').textContent ;
+
+
+        addTask.textContent = 'Update Task'
 
     })
 
@@ -67,10 +82,8 @@ function updateLocalStorage(){
             }
         })
     })
-
     localStorage.setItem('tasksData' , JSON.stringify(tasksData));
 }
-
 
 function initalRender() {
     if (localStorage.getItem('tasksData')) {
@@ -105,20 +118,28 @@ addTask.addEventListener('click', function () {
     let title = document.getElementById('taskTitle').value.trim();
     let desp = document.getElementById('titleDesp').value.trim();
 
+
     if(title === '' || desp === ''){
         alert('Please enter both title & description.')
         return ;
     }
 
-    makeTaskCard(title , desp , todoCol)
-    updateLocalStorage();
-    updateColCount();
 
+    if(taskBeingEdit){
+        taskBeingEdit.querySelector('h4').textContent = title ; 
+        taskBeingEdit.querySelector('p').textContent = desp ;
+        taskBeingEdit = null ;
+    }
+     else{
+        makeTaskCard(title , desp , todoCol)
+        updateColCount();
+    }
     
 
+    updateLocalStorage();
+
+
     document.getElementById('addTaskView').style.display = 'none'
-
-
     document.getElementById('taskTitle').value = '';
     document.getElementById('titleDesp').value = '';
 

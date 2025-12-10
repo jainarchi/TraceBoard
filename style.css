@@ -15,7 +15,7 @@ body {
 :root {
   --padding-nav: 1rem 2rem;
   --btn-padding: 0.4rem 0.5rem;
-  --btn-bg: rgb(255, 85, 0);
+  --btn-bg: rgb(255, 64, 0);
   --btn-font: 1rem;
 
   --padding-sm: 0.5rem;
@@ -160,6 +160,9 @@ textarea{
 }
 
 @media (max-width: 600px) {
+  nav{
+    padding-inline: 0.5rem;
+  }
   section {
     grid-template-columns: 1fr;
   }
