@@ -1,11 +1,9 @@
 # 📝 TraceBoard
 
-### 🔗 [View Live Demo]()
+### 🔗 [View Live Demo](https://trace-board.vercel.app/)
 
 **TraceBoard** is a streamlined task management application designed to help you organize your workflow efficiently. Built with a clean UI and distinct columns for **Todo**, **In Progress**, and **Done**, it allows for seamless task tracking with persistent data storage.
 
-![Project Banner or Screenshot](path/to/your/screenshot.png)
-*(Add a screenshot of your dashboard here to show off the clean UI)*
 
 ## ✨ Features
 
@@ -21,24 +19,6 @@
 * **CSS3:** Styling, Flexbox/Grid for layout.
 * **Vanilla JavaScript (ES6+):** DOM manipulation, Event Listeners, and Logic (No external frameworks used).
 
-## 🚀 How to Run Locally
-
-Since this project is built with Vanilla HTML/CSS/JS, you don't need to install any dependencies.
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YOUR_USERNAME/TraceBoard.git](https://github.com/YOUR_USERNAME/TraceBoard.git)
-    ```
-
-2.  **Navigate to the project folder:**
-    ```bash
-    cd TraceBoard
-    ```
-
-3.  **Open the application:**
-    * Simply double-click `index.html` to open it in your browser.
-    * OR use a customized extension like "Live Server" in VS Code.
-
 ## 📂 Project Structure
 
 ```text
@@ -51,13 +31,6 @@ TraceBoard/
 ├── style.css           # Styling and Layout
 ├── script.js           # Logic (Drag & Drop, LocalStorage, CRUD)
 └── README.md           # Project Documentation
-
-
-
-
-
-
-
 
 
 ## Credits
