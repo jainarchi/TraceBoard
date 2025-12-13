@@ -1,71 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TraceBoard</title>
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main>
-    <div id="addTaskView">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1976d2" />
+
+    <!-- iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="TraceBoard" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
+    <!-- iOS -->
+    <link rel="icon" sizes="192x192" href="icons/icon-192.png" />
+    <!-- browser tab -->
+
+
+
+
+
+    <link rel="stylesheet" href="style.css" />
+
+
+
+
+
+  </head>
+  <body>
+    <main>
+      <div id="addTaskView">
         <div>
-            <input id="taskTitle" type="text" placeholder="Title">
-            <textarea id="titleDesp" name="write here" placeholder="Description"></textarea>
+          <input id="taskTitle" type="text" placeholder="Title" />
+          <textarea
+            id="titleDesp"
+            name="write here"
+            placeholder="Description"
+          ></textarea>
 
-            <button id="addTask">Add Task</button>
-
+          <button id="addTask">Add Task</button>
         </div>
-    </div>
-    
-    <nav>
+      </div>
+
+      <nav>
         <h2 id="title">TraceBoard</h2>
         <button id="newTask">Add new task</button>
-    </nav>
-    
-    <section >
+      </nav>
+
+      <section>
         <div class="col" id="todoCol">
-            <div class="heading-count">
-                <h4>Todo</h4>
-                <span class="count">0</span>
-            </div>
-
-         
-            
+          <div class="heading-count">
+            <h4>Todo</h4>
+            <span class="count">0</span>
+          </div>
         </div>
-         <div class="col"  id="progressCol">
-            <div class="heading-count">
-                <h4>Progress</h4>
-                <span class="count">0</span>
-            </div>
-
-
+        <div class="col" id="progressCol">
+          <div class="heading-count">
+            <h4>Progress</h4>
+            <span class="count">0</span>
+          </div>
         </div>
 
-
-         <div class="col" id="doneCol" >
-            <div class="heading-count">
-                <h4>Done</h4>
-                <span class="count">0</span>
-            </div>
-
-
+        <div class="col" id="doneCol">
+          <div class="heading-count">
+            <h4>Done</h4>
+            <span class="count">0</span>
+          </div>
         </div>
+      </section>
+    </main>
 
-
-
- </section>
-
-
-
-</main>
-        
-   
-
-   <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
