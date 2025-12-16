@@ -1,8 +1,6 @@
-const CACHE_NAME = 'traceboard-cache-v1';
+const CACHE_NAME = 'traceboard-cache-v2';
 
-// List of files to cache
 const ASSETS = [
-  './',
   './index.html',
   './style.css',
   './script.js',
@@ -11,16 +9,15 @@ const ASSETS = [
   './icons/icon-180.png'
 ];
 
-// Install event – cache files
+// Install – cache files
 self.addEventListener('install', (event) => {
+  self.skipWaiting(); // important
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
 });
 
-// Activate event – clean old caches
+// Activate – clean old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -33,13 +30,16 @@ self.addEventListener('activate', (event) => {
       )
     )
   );
+  self.clients.claim(); // important
 });
 
-// Fetch event – serve cached content if offline
+// Fetch – cache first, then network
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedRes) => {
-      return cachedRes || fetch(event.request);
+    caches.match(event.request).then((cached) => {
+      return cached || fetch(event.request);
     })
   );
 });
