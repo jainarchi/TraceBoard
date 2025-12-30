@@ -67,7 +67,7 @@ function makeTaskCard(title , desp , column){
         document.getElementById('taskTitle').value = div.querySelector('h4').textContent ;
         document.getElementById('titleDesp').value = div.querySelector('p').textContent ;
 
-
+        
         addTask.textContent = 'Update Task'
 
     })
@@ -108,19 +108,25 @@ function initalRender() {
     }
 }
 
+function closeBtnFunc(){
+    closeBtn.style.display = 'none'
+    newTaskbtn.style.display = 'block'
+    document.getElementById('addTaskView').style.display = 'none'
+
+}
+
 initalRender();
 
 
+
+closeBtn.addEventListener('click' , closeBtnFunc)
 
 newTaskbtn.addEventListener('click', function () {
     document.getElementById('addTaskView').style.display = 'flex'
     closeBtn.style.display = 'block';
     newTaskbtn.style.display = 'none';
-    console.log('nononone');
-    
-    
-})
 
+})
 
 
 addTask.addEventListener('click', function () {
@@ -149,11 +155,11 @@ addTask.addEventListener('click', function () {
 
     updateLocalStorage();
 
-
-    document.getElementById('addTaskView').style.display = 'none'
     document.getElementById('taskTitle').value = '';
     document.getElementById('titleDesp').value = '';
 
+    closeBtnFunc()
+    
 })
 
 
