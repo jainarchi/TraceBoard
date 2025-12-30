@@ -23,6 +23,11 @@ body {
   --padding-2xl: 2rem;
 }
 
+
+main #addTaskView #crossIcon{
+   height: 1rem;
+}
+
 main {
   min-height: 100vh;
   width: 100%;
@@ -152,6 +157,10 @@ textarea{
   min-height: 20vh ;
   max-height: 40vh;
 }
+
+
+
+
 
 @media (max-width: 1000px) {
   section {
