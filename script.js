@@ -2,6 +2,7 @@ let tasksData = {}
 
 
 let newTaskbtn = document.getElementById('newTask')
+let closeBtn = document.getElementById('closeBtn')
 let addTask = document.getElementById('addTask')
 let tasks = document.querySelectorAll(".task")
 let cols = document.querySelectorAll(".col")
@@ -10,6 +11,9 @@ let progressCol = document.getElementById("progressCol")
 let doneCol = document.getElementById("doneCol")
 let draggedTask = null;
 let taskBeingEdit = null ;
+
+
+
 
 function updateColCount(){
     cols.forEach((col) =>{
@@ -21,6 +25,7 @@ function updateColCount(){
 }
 
 function makeTaskCard(title , desp , column){
+
 
        let div = document.createElement("div")
                     div.setAttribute('draggable', true)
@@ -109,6 +114,11 @@ initalRender();
 
 newTaskbtn.addEventListener('click', function () {
     document.getElementById('addTaskView').style.display = 'flex'
+    closeBtn.style.display = 'block';
+    newTaskbtn.style.display = 'none';
+    console.log('nononone');
+    
+    
 })
 
 
