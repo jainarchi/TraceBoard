@@ -62,12 +62,10 @@ function makeTaskCard(title , desp , column){
 
     div.querySelector('.edit-btn').addEventListener('click' , ()=>{
         newTaskbtn.click()
-        taskBeingEdit = div ;
 
+        taskBeingEdit = div ;
         document.getElementById('taskTitle').value = div.querySelector('h4').textContent ;
         document.getElementById('titleDesp').value = div.querySelector('p').textContent ;
-
-        
         addTask.textContent = 'Update Task'
 
     })
@@ -115,8 +113,12 @@ function closeBtnFunc(){
 
     document.getElementById('taskTitle').value = '';
     document.getElementById('titleDesp').value = '';
-
+    
+    taskBeingEdit = null
+    addTask.textContent = 'Add Task'
 }
+
+
 
 initalRender();
 
