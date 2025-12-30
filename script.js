@@ -113,6 +113,9 @@ function closeBtnFunc(){
     newTaskbtn.style.display = 'block'
     document.getElementById('addTaskView').style.display = 'none'
 
+    document.getElementById('taskTitle').value = '';
+    document.getElementById('titleDesp').value = '';
+
 }
 
 initalRender();
@@ -122,6 +125,10 @@ initalRender();
 closeBtn.addEventListener('click' , closeBtnFunc)
 
 newTaskbtn.addEventListener('click', function () {
+    
+    document.getElementById('taskTitle').value = '';
+    document.getElementById('titleDesp').value = '';
+
     document.getElementById('addTaskView').style.display = 'flex'
     closeBtn.style.display = 'block';
     newTaskbtn.style.display = 'none';
@@ -154,9 +161,6 @@ addTask.addEventListener('click', function () {
     
 
     updateLocalStorage();
-
-    document.getElementById('taskTitle').value = '';
-    document.getElementById('titleDesp').value = '';
 
     closeBtnFunc()
     
